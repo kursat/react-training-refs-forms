@@ -1,12 +1,21 @@
 import React, { useContext } from 'react';
-import { TodoContext } from '../../contexts/TodoContext';
+import { TodoContext, TodoDispatchContext } from '../../contexts/TodoContext';
+import { Button } from '@nextui-org/react';
 
 const TodoItem = ({ todo }) => {
     const todos = useContext(TodoContext);
+    const dispatch = useContext(TodoDispatchContext);
 
-    console.log('todos', todos);
-
-    return <div>{todo.text}</div>;
+    return (
+        <div>
+            {todo.text}
+            <Button
+                onClick={() => dispatch({ type: 'delete', payload: todo.id })}
+            >
+                Delete
+            </Button>
+        </div>
+    );
 };
 
 export default TodoItem;

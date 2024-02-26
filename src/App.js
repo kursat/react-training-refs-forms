@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import FormField from './components/FormField';
 import { Button } from '@nextui-org/react';
 
@@ -11,9 +11,24 @@ const App = () => {
         console.log('formFieldRef', formFieldRef);
     }, 2000);
 
+    const translate = (strings, ...values) => {
+        console.log('strings, values', strings, values);
+    };
+
+    const onClickButton = useCallback((e) => {
+        console.log(e);
+    }, []);
+
+    // const onClickButton_ = (e) => {
+    //     console.log(e);
+    // }
+    // const onClickButton = useCallback(onClickButton_, []);
+
     return (
         <div>
             <FormField ref={formFieldRef} />
+
+            {translate`ben ${1}, ve asd ${23}`}
 
             <Button
                 onClick={() => {

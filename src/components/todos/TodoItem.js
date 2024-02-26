@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import { TodoContext, TodoDispatchContext } from '../../contexts/TodoContext';
+import { TodoDispatchContext } from '../../contexts/TodoContext';
 import { Button } from '@nextui-org/react';
 
 const TodoItem = ({ todo }) => {
-    const todos = useContext(TodoContext);
     const dispatch = useContext(TodoDispatchContext);
 
     return (

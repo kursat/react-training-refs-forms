@@ -1,43 +1,28 @@
-import React, { useCallback, useRef, useState } from 'react';
-import FormField from './components/FormField';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Button } from '@nextui-org/react';
 
-const App = () => {
-    const [dummy, setDummy] = useState();
+const App = (props) => {
+    const [count, setCount] = useState(0);
 
-    const formFieldRef = useRef();
+    // const onClickPrint = () => {
+    //     console.log(count);
+    // };
 
-    setTimeout(() => {
-        console.log('formFieldRef', formFieldRef);
-    }, 2000);
+    const onClickPrint = useCallback(() => {
+        console.log(count);
+    }, [count]);
 
-    const translate = (strings, ...values) => {
-        console.log('strings, values', strings, values);
-    };
-
-    const onClickButton = useCallback((e) => {
-        console.log(e);
-    }, []);
-
-    // const onClickButton_ = (e) => {
-    //     console.log(e);
-    // }
-    // const onClickButton = useCallback(onClickButton_, []);
+    // useEffect(() => {
+    //     onClickPrint();
+    //     return () => {};
+    // }, [onClickPrint]);
 
     return (
         <div>
-            <FormField ref={formFieldRef} />
-
-            {translate`ben ${1}, ve asd ${23}`}
-
-            <Button
-                onClick={() => {
-                    console.log('formFieldRef', formFieldRef);
-                    setDummy(1);
-                }}
-            >
-                Focus
-            </Button>
+            {count}
+            {props.name}
+            <Button onClick={() => setCount(count + 1)}>+</Button>
+            <Button onClick={onClickPrint}>Print</Button>
         </div>
     );
 };

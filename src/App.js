@@ -1,28 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { Button } from '@nextui-org/react';
+import React from 'react';
+import TodosApp from './components/todos/TodosApp';
 
 const App = (props) => {
-    const [count, setCount] = useState(0);
-
-    // const onClickPrint = () => {
-    //     console.log(count);
-    // };
-
-    const onClickPrint = useCallback(() => {
-        console.log(count);
-    }, [count]);
-
-    // useEffect(() => {
-    //     onClickPrint();
-    //     return () => {};
-    // }, [onClickPrint]);
-
     return (
         <div>
-            {count}
-            {props.name}
-            <Button onClick={() => setCount(count + 1)}>+</Button>
-            <Button onClick={onClickPrint}>Print</Button>
+            <TodosApp />
         </div>
     );
 };

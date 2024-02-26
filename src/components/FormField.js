@@ -1,13 +1,15 @@
 import React, { forwardRef } from 'react';
 import Input from './Input';
+import { createPortal } from 'react-dom';
 
 const FormField = (test, ref) => {
     console.log('ref', ref);
 
-    return (
+    return createPortal(
         <div>
             <Input ref={ref} />
-        </div>
+        </div>,
+        document.getElementById('portal')
     );
 };
 
